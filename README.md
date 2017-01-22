@@ -28,3 +28,4 @@ We are going to make a very simple picture upload system.  We will also be using
 
 ## Resources
 * [Github Repo](https://github.com/tiy-lv-java-2016-11/pictr)
+* [Facebook Login Flow](https://developers.facebook.com/docs/facebook-login/web)
