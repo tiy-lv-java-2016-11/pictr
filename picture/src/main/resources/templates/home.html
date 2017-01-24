@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+
+{{^username}}
+    <a href="https://www.facebook.com/v2.8/dialog/oauth?client_id={{appId}}&redirect_uri=http://localhost:8080/login"
+    >login with facebook</a>
+{{/username}}
+{{#username}}
+    welcome, {{.}}
+{{/username}}
+
+<form action="/logout" method="post">
+    <button type="submit">logout</button>
+</form>
+
+
+</body>
+</html>
