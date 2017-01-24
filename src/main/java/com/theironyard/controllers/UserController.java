@@ -1,5 +1,7 @@
 package com.theironyard.controllers;
 
+import com.theironyard.entities.User;
+import com.theironyard.repositories.UserRepository;
 import com.theironyard.services.FacebookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,14 +20,8 @@ public class UserController {
     @Autowired
     FacebookService facebook;
 
-    @RequestMapping(path = "/", method = RequestMethod.GET)
-    public String getHome(Model model, HttpSession session){
-
-        model.addAttribute("username", session.getAttribute("username"));
-        model.addAttribute("appId", facebook.appId);
-        model.addAttribute("redirect", REDIRECT);
-        return "home";
-    }
+    @Autowired
+    UserRepository userRepo;
 
     @RequestMapping(path = "/login", method = RequestMethod.GET)
     public String fbLogin(String code, HttpSession session){
@@ -34,6 +30,11 @@ public class UserController {
             return "redirect:/";
         }
         String username = facebook.getUsername(userToken);
+        User user = userRepo.findByUsername(username);
+        if (user == null) {
+            user = new User(username, userToken);
+            userRepo.save(user);
+        }
         session.setAttribute(SESSION_USERNAME, username);
         return "redirect:/";
     }

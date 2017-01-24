@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-{{> head}}
+    {{> head}}
 </head>
 <body>
 <!-- Fixed navbar -->
@@ -18,13 +18,8 @@
         </div>
         <div class="navbar-collapse collapse navbar-right">
             <ul class="nav navbar-nav">
-                {{#username}}
                 <li><a href="/add-file">Upload a PictR.</a> </li>
                 <li><a href="/logout">LOGOUT</a> with Facebook</li>
-                {{/username}}
-                {{^username}}
-                <li><a href="https://www.facebook.com/v2.8/dialog/oauth?client_id={{appId}}&redirect_uri={{redirect}}">LOGIN</a> with Facebook</li>
-                {{/username}}
             </ul>
         </div><!--/.nav-collapse -->
     </div>
@@ -36,9 +31,7 @@
 <div id="blue">
     <div class="container">
         <div class="row">
-            {{#username}}
-            <h3>Welcome, {{.}}.</h3>
-            {{/username}}
+            <h3>Upload PictR.</h3>
         </div><!-- /row -->
     </div> <!-- /container -->
 </div><!-- /blue -->
@@ -50,18 +43,19 @@
 <div class="container centered">
     <div class="row">
         <div class="col-lg-8 col-lg-offset-2">
-            <h4>Here's a bunch of pictures.</h4>
+            <h4>Select a file to upload.</h4>
             <div class="hline"></div>
-            <ul>
-                {{#pictures}}
-                <li>
-                    <figure>
-                        <img src="files/{{filename}}" />
-                        <figcaption>{{caption}}</figcaption>
-                    </figure>
-                </li>
-                {{/pictures}}
-            </ul>
+            <form role="form" action="/add-file" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label >Select File</label>
+                    <input type="file" name="file"/>
+                </div>
+                <div class="form-group">
+                    <label >Photo caption</label>
+                    <input type="text" name="caption"/>
+                </div>
+                <button type="submit" class="btn btn-theme">Submit</button>
+            </form>
         </div>
     </div><! --/row -->
 </div><! --/container -->

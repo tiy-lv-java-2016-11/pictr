@@ -8,7 +8,7 @@ public class User {
     @Id
     @GeneratedValue
     private int id;
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String username;
     @Column
     private String token;
