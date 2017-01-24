@@ -40,7 +40,7 @@ public class PictrController {
         List<Picture> pictures = pictureRepo.findAll();
 
         model.addAttribute("username", username);
-        model.addAttribute("appId", facebook.appId);
+        model.addAttribute("fbappId", facebook.appId);
         model.addAttribute("redirect", REDIRECT);
         model.addAttribute("pictures", pictures);
         return "home";
@@ -56,6 +56,10 @@ public class PictrController {
         return "add-file";
     }
 
+    /* *
+     * Recieves 'file' and 'caption' from 'add-file' form,
+     * copies file to 'files' dir, creates Picture object and saves to PictureRepo
+     * */
     @RequestMapping(path = "/add-file", method = RequestMethod.POST)
     public String addFile(HttpSession session, MultipartFile file, String caption) throws IOException {
         String username = (String)session.getAttribute(SESSION_USERNAME);

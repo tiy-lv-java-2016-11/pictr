@@ -23,7 +23,8 @@
                 <li><a href="/logout">LOGOUT</a> with Facebook</li>
                 {{/username}}
                 {{^username}}
-                <li><a href="https://www.facebook.com/v2.8/dialog/oauth?client_id={{appId}}&redirect_uri={{redirect}}">LOGIN</a> with Facebook</li>
+                <li><a href="https://www.facebook.com/v2.8/dialog/oauth?client_id={{fbappId}}&redirect_uri={{redirect}}">LOGIN</a> with Facebook</li>
+                <li><a href="https://accounts.google.com/o/oauth2/auth?scope=email&redirect_uri={{redirect}}&response_type=code&client_id={{gClientId}}&approval_prompt=force">LOGIN</a> with Google</li>
                 {{/username}}
             </ul>
         </div><!--/.nav-collapse -->
