@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {{> head}}
+</head>
+<body>
+<!-- Fixed navbar -->
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html">PictR.</a>
+        </div>
+        <div class="navbar-collapse collapse navbar-right">
+            <ul class="nav navbar-nav">
+                <li><a href="/add-file">Upload a PictR.</a> </li>
+                <li><a href="/logout">LOGOUT</a> with Facebook</li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</div>
+
+<!-- *****************************************************************************************************************
+ BLUE WRAP
+ ***************************************************************************************************************** -->
+<div id="blue">
+    <div class="container">
+        <div class="row">
+            <h3>Upload PictR.</h3>
+        </div><!-- /row -->
+    </div> <!-- /container -->
+</div><!-- /blue -->
+
+<!-- *****************************************************************************************************************
+ CONTENT WRAP
+ ***************************************************************************************************************** -->
+
+<div class="container centered">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2">
+            <h4>Select a file to upload.</h4>
+            <div class="hline"></div>
+            <form role="form" action="/add-file" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label >Select File</label>
+                    <input type="file" name="file"/>
+                </div>
+                <div class="form-group">
+                    <label >Photo caption</label>
+                    <input type="text" name="caption"/>
+                </div>
+                <button type="submit" class="btn btn-theme">Submit</button>
+            </form>
+        </div>
+    </div><! --/row -->
+</div><! --/container -->
+
+{{> footer}}
+
+</body>
+</html>
